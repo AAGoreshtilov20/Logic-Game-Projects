@@ -9,13 +9,13 @@ using namespace std;
 //[x][y][z] = [player][row][card] respectfully !!!only when context = pl variable!!!; in normal for-s x, y, z are used as normal dimensions
 //"pl" is an array and "p" is a variable in some functuions, both associated with the player
 //UI: a = and, o = or, x = xor, n = not
-//Meaning of values in pl: and0 = 10, and1 = 11, or0 = 20, or1 = 21, xor0 = 30, xor1 = 31
+//Meaning of values in pl: and 0 = 10, and 1 = 11, or 0 = 20, or 1 = 21, xor 0 = 30, xor 1 = 31
 
-string pl[2][5][5]; //player var [player(1 or 2)][row][card]; not all cards are going to be used!
+int pl[2][5][5]; //player var [player(1 or 2)][row][card]; not all cards are going to be used!
 int pos; //the next to be placed card's position
 bool val; //value for card
-char card; //name of card (and, or, xor)
 char nothing;
+string card; //name of card (and, or, xor)
 
 void empty()
 {
@@ -33,13 +33,13 @@ void r(int p, int rNum)
         }
         break;
     case 1:
-        cout << "      ";
+        cout << "     ";
         for (int z = 0; z < 4; z++)
         {
-            cout << "    ";
-            if (pl[p][1][z] != "0")
+            cout << "     ";
+            if (pl[p][1][z] != 0)
             {
-                cout << "|" <<  pl[p][1][z] << "|";
+                cout << "|" <<  "1" << z << "|";
             }
             else
             {
@@ -48,13 +48,45 @@ void r(int p, int rNum)
         }
         break;
     case 2:
-
+        cout << "         ";
+        for (int z = 0; z < 3; z++)
+        {
+            cout << "     ";
+            if (pl[p][2][z] != 0)
+            {
+                cout << "|" << "2" << z << "|";
+            }
+            else
+            {
+                cout << " #" << z + 5 << " ";
+            }
+        }
         break;
     case 3:
-
+        cout << "             ";
+        for (int z = 0; z < 2; z++)
+        {
+            cout << "     ";
+            if (pl[p][3][z] != 0)
+            {
+                cout << "|" << "3" << z << "|";
+            }
+            else
+            {
+                cout << " #" << z + 8 << " ";
+            }
+        }
         break;
     case 4:
-
+        cout << "                      ";
+        if (pl[p][4][0] != 0)
+        {
+            cout << "|40|";
+        }
+        else
+        {
+            cout << " #10";
+        }
         break;
     }
     cout << endl;
@@ -69,20 +101,93 @@ void fieldGen(int p)
 
 void turn(int p)
 {
+    int y, z;
+
     fieldGen(p); //gen visuals
-    cout << " Which card do you want to place? ";
+    cout << "\n\n Which card do you want to place? ";
     cin >> card;
-    cout << endl << " What is its value? ";
+    cout << " What is its value? ";
     cin >> val;
-    cout << endl << " Where do you want to place it? ";
+    cout << " Where do you want to place it? ";
     cin >> pos;
     system("CLS"); //cout << card << val << pos << endl; <- for testing
-    
+
     switch (pos)
     {
     case 1:
-        pl[p][1][0] = card + char(val);
+        y = 1;
+        z = 0;
         break;
+    case 2:
+        y = 1;
+        z = 1;
+        break;
+    case 3:
+        y = 1;
+        z = 2;
+        break;
+    case 4:
+        y = 1;
+        z = 3;
+        break;
+    case 5:
+        y = 2;
+        z = 0;
+        break;
+    case 6:
+        y = 2;
+        z = 1;
+        break;
+    case 7:
+        y = 2;
+        z = 2;
+        break;
+    case 8:
+        y = 3;
+        z = 0;
+        break;
+    case 9:
+        y = 3;
+        z = 1;
+        break;
+    case 10:
+        y = 4;
+        z = 0;
+        break;
+    }
+    
+    if (card == "and")
+    {
+        if (val == 0)
+        {
+            pl[p][y][z] = 10;
+        }
+        else
+        {
+            pl[p][y][z] = 11;
+        }
+    }
+    else if (card == "or")
+    {
+        if (val == 0)
+        {
+            pl[p][y][z] = 20;
+        }
+        else
+        {
+            pl[p][y][z] = 21;
+        }
+    }
+    else if (card == "xor")
+    {
+        if (val == 0)
+        {
+            pl[p][y][z] = 30;
+        }
+        else
+        {
+            pl[p][y][z] = 31;
+        }
     }
 
     fieldGen(p);
@@ -107,7 +212,7 @@ int main()
         {
             for (int z = 0; z < 5; z++)
             {
-                pl[x][y][z] = '0';
+                pl[x][y][z] = 0;
             }
         }
     }
