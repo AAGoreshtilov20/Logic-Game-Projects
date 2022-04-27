@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
@@ -33,7 +34,7 @@ void r(int p, int rNum)
         }
         break;
     case 1:
-        cout << "     ";
+        cout << setw(10);
         for (int z = 0; z < 4; z++)
         {
             cout << "     ";
@@ -48,7 +49,7 @@ void r(int p, int rNum)
         }
         break;
     case 2:
-        cout << "         ";
+        cout << setw(14);
         for (int z = 0; z < 3; z++)
         {
             cout << "     ";
@@ -63,7 +64,7 @@ void r(int p, int rNum)
         }
         break;
     case 3:
-        cout << "             ";
+        cout << setw(18);
         for (int z = 0; z < 2; z++)
         {
             cout << "     ";
@@ -78,7 +79,7 @@ void r(int p, int rNum)
         }
         break;
     case 4:
-        cout << "                      ";
+        cout << setw(26);
         if (pl[p][4][0] != 0)
         {
             cout << "|40|";
