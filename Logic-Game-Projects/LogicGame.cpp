@@ -197,6 +197,8 @@ void turn(int p)
     system("CLS"); //end of turn
 }
 
+void draw()
+
 int main()
 {
     srand(time(NULL)); //call srand once to get random seed from time
