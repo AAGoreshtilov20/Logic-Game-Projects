@@ -197,7 +197,25 @@ void turn(int p)
     system("CLS"); //end of turn
 }
 
-void draw()
+int draw()
+{
+    srand((unsigned)time(NULL));
+
+    // Loop to get 1 or more random numbers
+    for (int x = 1; x <= 1; x++)
+    {
+
+        // Retrieve a random number between 1 and 5
+        // Offset = 1
+        // Range = 6
+        int random = 1 + (rand() % 6);
+    }
+
+    //Returns the random number
+    return random;
+
+  
+}
 
 int main()
 {
