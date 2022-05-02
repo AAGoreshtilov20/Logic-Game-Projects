@@ -40,7 +40,7 @@ void r(int p, int rNum)
             cout << "     ";
             if (pl[p][1][z] != 0)
             {
-                cout << "|" <<  "1" << z << "|";
+                cout << "|" << pl[p][0][z] << "|";
             }
             else
             {
@@ -55,7 +55,7 @@ void r(int p, int rNum)
             cout << "     ";
             if (pl[p][2][z] != 0)
             {
-                cout << "|" << "2" << z << "|";
+                cout << "|" << pl[p][0][z] << z << "|";
             }
             else
             {
@@ -70,7 +70,7 @@ void r(int p, int rNum)
             cout << "     ";
             if (pl[p][3][z] != 0)
             {
-                cout << "|" << "3" << z << "|";
+                cout << "|" << pl[p][0][z] << "|";
             }
             else
             {
@@ -82,7 +82,7 @@ void r(int p, int rNum)
         cout << setw(26);
         if (pl[p][4][0] != 0)
         {
-            cout << "|40|";
+            cout << "|" << pl[p][0][0] << "|";
         }
         else
         {
