@@ -201,20 +201,15 @@ int draw()
 {
     srand((unsigned)time(NULL));
 
-    // Loop to get 1 or more random numbers
-    for (int x = 1; x <= 1; x++)
+   
+    for (int x = 1; x <= 1; x++) // Loop to get 1 or more random numbers
     {
-
-        // Retrieve a random number between 1 and 5
-        // Offset = 1
-        // Range = 6
-        int random = 1 + (rand() % 6);
+ 
+        int random = 1 + (rand() % 6); // Retrieve a random number between 1 and 5
     }
 
-    //Returns the random number
-    return random;
+    return random; //Returns the random number
 
-  
 }
 
 int main()
