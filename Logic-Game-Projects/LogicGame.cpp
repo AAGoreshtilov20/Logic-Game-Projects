@@ -4,7 +4,6 @@
 using namespace std;
 
 //Legend:
-//r = row of cards; row = row of chars/strings
 //gen = generation, generating
 //0th row = the five preset bools for each player
 //[x][y][z] = [player][row][card] respectfully !!!only when context = pl variable!!!; in normal for-s x, y, z are used as normal dimensions
@@ -23,18 +22,17 @@ struct card
     bool sign = 0;
     string row[6] = { " _____ ", "|^   ^|", "", "", "|__|__|" };
 }
-def, fd[2][5][5], hand[2][6]; //default var; field var [player(1 or 2)][row][card], hand var [player(1 or 2)][card]
+def, fd[2][5][5], hand[2][5]; //default var; field var [player(1 or 2)][row][card], hand var [player(1 or 2)][card]
 
 string empty(int b) 
 {
-    switch(b)
+    if (b)
     {
-    case 0:
-        return "     "; //5 spaces (space between cards)
-        break;
-    case 1:
         return "       "; //7 spaces (replaces a card)
-        break;
+    }
+    else
+    {
+        return "     "; //5 spaces (space between cards)
     }
 }
 
@@ -78,130 +76,162 @@ void rowGen(int row, int cNum) //cNum = empty card's UI number
     }
     cout << endl;
 }
-void rGen()
+void fieldGen()
 {
-    switch (rNum)
+    for (int j = 0; j < 5; j++)
+    {
+        rNum = j;
+        switch (rNum)
+        {
+        case 0:
+            for (int z = 0; z < 5; z++)
+            {
+                cout << empty(0) << def.row[0];
+            }
+            cout << endl;
+
+            for (int z = 0; z < 5; z++)
+            {
+                cout << empty(0) << "|  " << fd[pl][rNum][z].val << "  |"; //5 spaces infront
+            }
+            cout << endl;
+
+            for (int z = 0; z < 5; z++)
+            {
+                cout << empty(0) << def.row[4];
+            }
+            cout << endl;
+            break;
+
+        case 1:
+            for (int i = 1; i < 6; i++)
+            {
+                rowGen(i, 1);
+            }
+            break;
+
+        case 2:
+            for (int i = 1; i < 6; i++)
+            {
+                rowGen(i, 5);
+            }
+            break;
+
+        case 3:
+            for (int i = 1; i < 6; i++)
+            {
+                rowGen(i, 8);
+            }
+            break;
+
+        case 4:
+            for (int i = 1; i < 6; i++)
+            {
+                rowGen(i, 10);
+            }
+            break;
+        }
+    }
+}
+
+void draw(int x, int y)
+{
+    hand[x][y].val = rand() % 2;
+    int card = rand() % 3;
+    switch (card)
     {
     case 0:
-        for (int z = 0; z < 5; z++)
-        {
-            cout << empty(0) << def.row[0];
-        }
-        cout << endl;
-
-        for (int z = 0; z < 5; z++)
-        {
-            cout << empty(0) << "|  " << fd[pl][rNum][z].val << "  |"; //5 spaces infront
-        }
-        cout << endl;
-
-        for (int z = 0; z < 5; z++)
-        {
-            cout << empty(0) << def.row[4];
-        }
-        cout << endl;
+        hand[x][y].name = "and";
         break;
-
     case 1:
-        for (int i = 1; i < 6; i++)
-        {
-            rowGen(i, 1);
-        }
+        hand[x][y].name = "oro";
         break;
-
     case 2:
-        for (int i = 1; i < 6; i++)
-        {
-            rowGen(i, 5);
-        }
-        break;
-
-    case 3:
-        for (int i = 1; i < 6; i++)
-        {
-            rowGen(i, 8);
-        }
-        break;
-
-    case 4:
-        for (int i = 1; i < 6; i++)
-        {
-            rowGen(i, 10);
-        }
+        hand[x][y].name = "xor";
         break;
     }
 }
-void fieldGen()
+void handGen()
 {
-    for (int i = 0; i < 5; i++)
-    {
-        rNum = i;
-        rGen();
-    }
+    
 }
 
 void turn()
 {
-    int y, z;
-    int pos;
+    int y, z, pos, b, dis;
 
     fieldGen(); //gen visuals
+    handGen();
 
-    cout << "\n\n Where do you want to place your card? ";
-    cin >> pos;
-    switch (pos)
-    {
-    case 1:
-        y = 1;
-        z = 0;
-        break;
-    case 2:
-        y = 1;
-        z = 1;
-        break;
-    case 3:
-        y = 1;
-        z = 2;
-        break;
-    case 4:
-        y = 1;
-        z = 3;
-        break;
-    case 5:
-        y = 2;
-        z = 0;
-        break;
-    case 6:
-        y = 2;
-        z = 1;
-        break;
-    case 7:
-        y = 2;
-        z = 2;
-        break;
-    case 8:
-        y = 3;
-        z = 0;
-        break;
-    case 9:
-        y = 3;
-        z = 1;
-        break;
-    case 10:
-        y = 4;
-        z = 0;
-        break;
-    }
+    cout << "\n\n What do you want to do? (type 0 to discard a card, type 1 to place a card) ";
+    cin >> b;
 
-    cout << " Which card do you want to place? ";
-    cin >> fd[pl][y][z].name;
-    cout << " What is its value? ";
-    cin >> fd[pl][y][z].val;
-    if (fd[pl][y][z].name == "or")
+    if (b)
     {
-        fd[pl][y][z].name = "oro";
+        cout << " Where do you want to place your card? ";
+        cin >> pos;
+        switch (pos)
+        {
+        case 1:
+            y = 1;
+            z = 0;
+            break;
+        case 2:
+            y = 1;
+            z = 1;
+            break;
+        case 3:
+            y = 1;
+            z = 2;
+            break;
+        case 4:
+            y = 1;
+            z = 3;
+            break;
+        case 5:
+            y = 2;
+            z = 0;
+            break;
+        case 6:
+            y = 2;
+            z = 1;
+            break;
+        case 7:
+            y = 2;
+            z = 2;
+            break;
+        case 8:
+            y = 3;
+            z = 0;
+            break;
+        case 9:
+            y = 3;
+            z = 1;
+            break;
+        case 10:
+            y = 4;
+            z = 0;
+            break;
+        }
+        cout << " Which card do you want to place? ";
+        cin >> fd[pl][y][z].name;
+        cout << " What is its value? ";
+        cin >> fd[pl][y][z].val;
+        if (fd[pl][y][z].name == "or")
+        {
+            fd[pl][y][z].name = "oro";
+        }
+        fd[pl][y][z].sign = 1;
     }
-    fd[pl][y][z].sign = 1;
+    else
+    {
+        cout << " Which card do you want to discard? ";
+        cin >> dis;
+        dis--;
+    }
+    hand[pl][dis].val = hand[pl][4].val;
+    hand[pl][dis].name = hand[pl][4].name;
+    draw(pl, 4);
     system("CLS");
 
     fieldGen();
@@ -209,19 +239,22 @@ void turn()
     system("CLS"); //end of turn
 }
 
-int draw()
+int main() //add gamemode "practice" without drawing and AI
 {
-    return 1 + (rand() % 6); // Retrieve a random number between 1 and 6
-}
-
-int main()
-{
-    srand(time(NULL)); //call srand once to get random seed from time
+    srand(time(NULL)); //call srand once in a program to get a random seed from time
 
     for (int z = 0; z < 5; z++)
     {
         fd[0][0][z].val = rand() % 2;
         fd[1][0][z].val = !fd[0][0][z].val;
+    }
+
+    for (int x = 0; x < 2; x++)
+    {
+        for (int y = 0; y < 4; y++)
+        {
+            draw(x, y);
+        }
     }
 
     while (true) //start of game

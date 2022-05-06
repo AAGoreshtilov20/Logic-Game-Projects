@@ -1,4 +1,3 @@
 ﻿  LogicGame.cpp
-D:\PGKPI programing\ShitHub\Logic-Game-Projects\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(270,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\PGKPI programing\ShitHub\Logic-Game-Projects\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(39): warning C4715: 'empty': not all control paths return a value
+D:\PGKPI programing\ShitHub\Logic-Game-Projects\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(245,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   LogicGame.vcxproj -> D:\PGKPI programing\ShitHub\Logic-Game-Projects\Logic-Game-Projects\Logic-Game-Projects\Debug\LogicGame.exe
