@@ -1,7 +1,6 @@
 #include <iostream>
-#include <iomanip>
 #include <string>
-#include<cstdlib>
+#include <cstdlib>
 using namespace std;
 
 //Legend:
@@ -21,60 +20,56 @@ struct card
 {
     string name; //and, or, xor
     bool val; //value for card
-    string row[6] = { " _____ ", "|^   ^|", "", "", "|  |  |", "|_____|" };
+    bool sign = 0;
+    string row[6] = { " _____ ", "|^   ^|", "", "", "|__|__|" };
 }
 def, fd[2][5][5], hand[2][6]; //default var; field var [player(1 or 2)][row][card], hand var [player(1 or 2)][card]
 
-string empty(bool b) 
+string empty(int b) 
 {
-    if (b)
+    switch(b)
     {
-        return "       "; //7 spaces (replaces a card)
-    }
-    else
-    {
+    case 0:
         return "     "; //5 spaces (space between cards)
+        break;
+    case 1:
+        return "       "; //7 spaces (replaces a card)
+        break;
     }
 }
 
-void rowGen3(int cNum) 
+void front(int times)
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < times; i++)
+    {
+        cout << empty(0) << " ";
+    }
+}
+void rowGen(int row, int cNum) //cNum = empty card's UI number
+{
+    front(rNum);
+    for (int i = 0; i < 5 - rNum; i++)
     {
         cout << empty(0);
-        if (fd[pl][rNum][i].val != NULL)
+        if (fd[pl][rNum][i].sign == 1)
         {
-            cout << "|  " << fd[pl][rNum][i].val << "  |";
+            switch (row)
+            {
+            case 3:
+                cout << "| " << fd[pl][rNum][i].name << " |";
+                break;
+            case 4:
+                cout << "|  " << fd[pl][rNum][i].val << "  |";
+                break;
+            default:
+                int sRow = row - 1;
+                cout << def.row[sRow];
+                break;
+            }
         }
-        else
+        else if (row == 4)
         {
             cout << "  #" << i + cNum << "   ";
-        }
-    }
-}
-void rowGen2()
-{
-    for (int i = 0; i < 4; i++)
-    {
-        cout << empty(0);
-        if (fd[pl][rNum][i].val != NULL)
-        {
-            cout << "| " << fd[pl][rNum][i].name << " |";
-        }
-        else
-        {
-            cout << empty(1);
-        }
-    }
-}
-void rowGen1(int rowS) //rowS = row Specific; cNum = empty card's UI number
-{
-    for (int i = 0; i < 4; i++)
-    {
-        cout << empty(0);
-        if (fd[pl][rNum][i].val != NULL)
-        {
-            cout << def.row[rowS];
         }
         else
         {
@@ -105,62 +100,43 @@ void rGen()
             cout << empty(0) << def.row[4];
         }
         cout << endl;
-
-        for (int z = 0; z < 5; z++)
-        {
-            cout << empty(0) << def.row[5];
-        }
-        cout << endl << endl;
         break;
 
     case 1:
-        rowGen1(0);
-        rowGen1(1);
-        rowGen2();
-        rowGen3(1);
-        rowGen1(4);
-        rowGen1(5);
-        cout << endl;
+        for (int i = 1; i < 6; i++)
+        {
+            rowGen(i, 1);
+        }
         break;
 
     case 2:
-        rowGen1(0);
-        rowGen1(1);
-        rowGen2();
-        rowGen3(5);
-        rowGen1(4);
-        rowGen1(5);
-        cout << endl;
+        for (int i = 1; i < 6; i++)
+        {
+            rowGen(i, 5);
+        }
         break;
 
     case 3:
-        rowGen1(0);
-        rowGen1(1);
-        rowGen2();
-        rowGen3(8);
-        rowGen1(4);
-        rowGen1(5);
-        cout << endl;
+        for (int i = 1; i < 6; i++)
+        {
+            rowGen(i, 8);
+        }
         break;
 
     case 4:
-        rowGen1(0);
-        rowGen1(1);
-        rowGen2();
-        rowGen3(10);
-        rowGen1(4);
-        rowGen1(5);
-        cout << endl;
+        for (int i = 1; i < 6; i++)
+        {
+            rowGen(i, 10);
+        }
         break;
     }
-    cout << endl;
 }
 void fieldGen()
 {
     for (int i = 0; i < 5; i++)
     {
-        rGen();
         rNum = i;
+        rGen();
     }
 }
 
@@ -223,8 +199,9 @@ void turn()
     cin >> fd[pl][y][z].val;
     if (fd[pl][y][z].name == "or")
     {
-        fd[pl][y][z].name = "or ";
+        fd[pl][y][z].name = "oro";
     }
+    fd[pl][y][z].sign = 1;
     system("CLS");
 
     fieldGen();
@@ -249,10 +226,10 @@ int main()
 
     while (true) //start of game
     {
-        pl = 1;
+        pl = 0;
         turn(); //start of player1's turn
 
-        pl = 2;
+        pl = 1;
         turn(); //start of player2's turn
     }
 }
