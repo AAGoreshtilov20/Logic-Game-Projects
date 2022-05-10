@@ -1,0 +1,7 @@
+﻿  LogicGame.cpp
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(244,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 144 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  LogicGame.vcxproj -> D:\Github\Logic-Game-Projects\Logic-Game-Projects\x64\Release\LogicGame.exe
