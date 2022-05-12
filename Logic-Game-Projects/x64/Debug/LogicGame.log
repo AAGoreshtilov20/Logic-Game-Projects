@@ -1,2 +1,18 @@
 ﻿  LogicGame.cpp
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(9,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(13,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(13,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  MainMenu.cpp
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'G': unrecognized character escape sequence
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'L': unrecognized character escape sequence
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'O': unrecognized character escape sequence
+  Generating Code...
   LogicGame.vcxproj -> D:\Github\Logic-Game-Projects\Logic-Game-Projects\x64\Debug\LogicGame.exe
