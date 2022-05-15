@@ -8,12 +8,12 @@ using namespace sf;
 
 void main()
 {
-	//Main Winow
+	//Draw Main Winow
 	RenderWindow MENU(VideoMode(960, 720), "Main Menu", Style::Default);
 	MENU.setView(View(FloatRect(0.0f, 0.0f, 960.0f, 720.0f)));
 	MainMenu mainMenu(MENU.getSize().x, MENU.getSize().y);
 
-	//Audio
+	//Add Audio
 	Music Music;
 	if (!Music.openFromFile("Music/CaravanToMemphis.wav"))
 	{
@@ -28,50 +28,50 @@ void main()
 	RectangleShape background;
 	background.setSize(Vector2f(960, 720));
 	Texture Maintexture;
-	Maintexture.loadFromFile("Img/Background.png");
+	Maintexture.loadFromFile("Img/Background.png"); //load background
 	background.setTexture(&Maintexture);
 
 	//background to the Game
 	RectangleShape Pbackground;
 	Pbackground.setSize(Vector2f(960, 720));
 	Texture option_texture;
-	option_texture.loadFromFile("Img/Table.png");
+	option_texture.loadFromFile("Img/Table.png"); //load background
 	Pbackground.setTexture(&option_texture);
 
 	//background to the Options
 	RectangleShape Obackground;
 	Obackground.setSize(Vector2f(960, 720));
 	Texture options_texture;
-	option_texture.loadFromFile("Img/Background.png");
+	option_texture.loadFromFile("Img/Background.png"); //load background
 	Obackground.setTexture(&options_texture);
 
 	//background to the HowToPlay
 	RectangleShape HtPbackground;
 	HtPbackground.setSize(Vector2f(960, 720));
 	Texture HowToPlay_texture;
-	HowToPlay_texture.loadFromFile("Img/Background.png");
+	HowToPlay_texture.loadFromFile("Img/Background.png"); //load background
 	HtPbackground.setTexture(&HowToPlay_texture);
 
-	while (MENU.isOpen())
+	while (MENU.isOpen()) //Constructor
 	{
 		Event event;
 
 		while (MENU.pollEvent(event))
 		{
-			if (event.type == Event::Closed)
+			if (event.type == Event::Closed) //Close window
 			{
 				MENU.close();
 			}
 
 			if (event.type == Event::KeyReleased)
 			{
-				if (event.key.code == Keyboard::Up)
+				if (event.key.code == Keyboard::Up) //move to upper button
 				{
 					mainMenu.MoveUp();
 					break;
 				}
 
-				if (event.key.code == Keyboard::Down)
+				if (event.key.code == Keyboard::Down) //move to lower button
 				{
 					mainMenu.MoveDown();
 					break;
@@ -86,11 +86,11 @@ void main()
 
 					int x = mainMenu.MainMenuPressed();
 
-					if (x == 0)
+					if (x == 0) //When pressed Play
 					{
 						while (Play.isOpen())
 						{
-							OPTIONS.close();
+							OPTIONS.close(); //Close all other windows, open Play window
 							Exit.close();
 							HowToPlay.close();
 							Play.clear();
@@ -99,14 +99,14 @@ void main()
 
 							Event aevent;
 
-							while (Play.pollEvent(aevent))
+							while (Play.pollEvent(aevent))  //Close window
 							{
 								if (aevent.type == Event::Closed)
 								{
 									Play.close();
 								}
 
-								else if (aevent.type == Event::KeyPressed)
+								else if (aevent.type == Event::KeyPressed) //Close window when pressed G
 								{
 									if (aevent.key.code == Keyboard::G)
 									{
@@ -118,13 +118,13 @@ void main()
 						}
 					}
 
-					if (x == 1)
+					if (x == 1) //When pressed Options
 					{
 						while (OPTIONS.isOpen())
 						{
 							Event aevent;
 
-							while (OPTIONS.pollEvent(aevent))
+							while (OPTIONS.pollEvent(aevent)) //Close window
 							{
 								if (aevent.type == Event::Closed)
 								{
@@ -132,7 +132,7 @@ void main()
 								}
 
 
-								if (aevent.type == Event::KeyPressed)
+								if (aevent.type == Event::KeyPressed) //Close window when pressed G
 								{
 									if (aevent.key.code == Keyboard::G)
 									{
@@ -148,13 +148,13 @@ void main()
 							OPTIONS.display();
 						}
 
-						if (x == 2)
+						if (x == 2) //When pressed HowToPlay
 						{
 							while (HowToPlay.isOpen())
 							{
 								Event aevent;
 
-								while (HowToPlay.pollEvent(aevent))
+								while (HowToPlay.pollEvent(aevent)) //Close window 
 								{
 									if (aevent.type == Event::Closed)
 									{
@@ -162,7 +162,7 @@ void main()
 									}
 
 
-									if (aevent.type == Event::KeyPressed)
+									if (aevent.type == Event::KeyPressed) //Close window when pressed G
 									{
 										if (aevent.key.code == Keyboard::G)
 										{
@@ -178,7 +178,7 @@ void main()
 								HowToPlay.display();
 							}
 						}
-						if (x == 3)
+						if (x == 3) //When pressed Exit
 						{
 							if (Exit.isOpen())
 							{
@@ -191,7 +191,7 @@ void main()
 			}
 		}
 
-		MENU.clear();
+		MENU.clear(); //Create MainMenu
 		MENU.draw(background);
 		mainMenu.draw(MENU);
 		MENU.display();
