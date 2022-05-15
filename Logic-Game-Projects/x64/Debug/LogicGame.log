@@ -10,9 +10,4 @@ D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(13,34): warning 
           [
               T=unsigned int
           ]
-  MainMenu.cpp
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'G': unrecognized character escape sequence
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'L': unrecognized character escape sequence
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\MainMenu.cpp(5,25): warning C4129: 'O': unrecognized character escape sequence
-  Generating Code...
   LogicGame.vcxproj -> D:\Github\Logic-Game-Projects\Logic-Game-Projects\x64\Debug\LogicGame.exe

@@ -95,6 +95,7 @@ void main()
 								}
 							}
 							OPTIONS.close();
+							Exit.close();
 							HowToPlay.close();
 							Play.clear();
 
@@ -125,6 +126,7 @@ void main()
 							}
 							Play.close();
 							HowToPlay.close();
+							Exit.close();
 							OPTIONS.clear();
 
 							OPTIONS.display();
@@ -153,6 +155,7 @@ void main()
 								}
 								Play.close();
 								OPTIONS.close();
+								Exit.close();
 								HowToPlay.clear();
 
 								HowToPlay.display();

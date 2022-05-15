@@ -2,7 +2,7 @@
 
 MainMenu::MainMenu(float width, float height)
 {
-	if (!font.loadFromFile(""))
+	if (!font.loadFromFile("GameFonts/Oswald-Regular.ttf"))
 	{
 		cout << "Error. Font Not Found!" << endl;
 	} //font needs to be downloaded to work!!
@@ -42,7 +42,7 @@ MainMenu::~MainMenu()
 }
 //DrawMainMenu
 void MainMenu::draw(RenderWindow& window) {
-	for (int i = 0; i < Max_main_menu; ++i)
+	for (int i = 0; i < Max_main_menu; i++)
 	{
 		window.draw(mainMenu[i]);
 	}
