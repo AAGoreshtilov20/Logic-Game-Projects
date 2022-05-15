@@ -1,5 +1,6 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include "MainMenu.h"
 
 using namespace std;
@@ -8,9 +9,21 @@ using namespace sf;
 void main()
 {
 	//Main Winow
-
 	RenderWindow MENU(VideoMode(960, 720), "Main Menu", Style::Default);
+	MENU.setView(View(FloatRect(0.0f, 0.0f, 960.0f, 720.0f)));
 	MainMenu mainMenu(MENU.getSize().x, MENU.getSize().y);
+
+	//Audio
+	Music Music;
+	if (!Music.openFromFile("Music/CaravanToMemphis.wav"))
+	{
+		cout << "Error! Music Not Found!";
+	}
+
+	Music.play();
+	Music.setLoop(true);
+
+
 	//set background
 	RectangleShape background;
 	background.setSize(Vector2f(960, 720));
@@ -18,19 +31,19 @@ void main()
 	Maintexture.loadFromFile("Img/Background.png");
 	background.setTexture(&Maintexture);
 
-	//background to the game
+	//background to the Game
 	RectangleShape Pbackground;
 	Pbackground.setSize(Vector2f(960, 720));
-	Texture back_texture;
-	back_texture.loadFromFile("Img/Background.png");
-	Pbackground.setTexture(&back_texture);
+	Texture option_texture;
+	option_texture.loadFromFile("Img/Table.png");
+	Pbackground.setTexture(&option_texture);
 
 	//background to the Options
 	RectangleShape Obackground;
 	Obackground.setSize(Vector2f(960, 720));
-	Texture option_texture;
+	Texture options_texture;
 	option_texture.loadFromFile("Img/Background.png");
-	Obackground.setTexture(&option_texture);
+	Obackground.setTexture(&options_texture);
 
 	//background to the HowToPlay
 	RectangleShape HtPbackground;
@@ -77,6 +90,13 @@ void main()
 					{
 						while (Play.isOpen())
 						{
+							OPTIONS.close();
+							Exit.close();
+							HowToPlay.close();
+							Play.clear();
+							Play.draw(Pbackground);
+							Play.display();
+
 							Event aevent;
 
 							while (Play.pollEvent(aevent))
@@ -85,21 +105,16 @@ void main()
 								{
 									Play.close();
 								}
-							}
 
-							if (aevent.type == Event::KeyPressed)
-							{
-								if (aevent.key.code == Keyboard::Escape)
+								else if (aevent.type == Event::KeyPressed)
 								{
-									Play.close();
+									if (aevent.key.code == Keyboard::G)
+									{
+										Play.close();
+									}
 								}
-							}
-							OPTIONS.close();
-							Exit.close();
-							HowToPlay.close();
-							Play.clear();
 
-							Play.display();
+							}
 						}
 					}
 
@@ -115,13 +130,14 @@ void main()
 								{
 									OPTIONS.close();
 								}
-							}
 
-							if (aevent.type == Event::KeyPressed)
-							{
-								if (aevent.key.code == Keyboard::Escape)
+
+								if (aevent.type == Event::KeyPressed)
 								{
-									OPTIONS.close();
+									if (aevent.key.code == Keyboard::G)
+									{
+										OPTIONS.close();
+									}
 								}
 							}
 							Play.close();
@@ -144,13 +160,14 @@ void main()
 									{
 										HowToPlay.close();
 									}
-								}
 
-								if (aevent.type == Event::KeyPressed)
-								{
-									if (aevent.key.code == Keyboard::Escape)
+
+									if (aevent.type == Event::KeyPressed)
 									{
-										HowToPlay.close();
+										if (aevent.key.code == Keyboard::G)
+										{
+											HowToPlay.close();
+										}
 									}
 								}
 								Play.close();
@@ -163,14 +180,17 @@ void main()
 						}
 						if (x == 3)
 						{
-							MENU.close();
-							break;
+							if (Exit.isOpen())
+							{
+								break;
+							}
 						}
 					}
 				}
 
 			}
 		}
+
 		MENU.clear();
 		MENU.draw(background);
 		mainMenu.draw(MENU);

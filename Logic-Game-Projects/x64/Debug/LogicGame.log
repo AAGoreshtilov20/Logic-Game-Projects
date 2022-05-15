@@ -1,13 +1,27 @@
-﻿  LogicGame.cpp
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(9,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(13,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+﻿  GAME.cpp
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(15,14): error C2143: syntax error: missing ';' before '*'
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(15,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(15,22): error C2238: unexpected token(s) preceding ';'
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(16,8): error C3646: 'event': unknown override specifier
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(16,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(24,8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(24,8): warning C4183: 'Game': missing return type; assumed to be a member function returning 'int'
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.h(25,15): error C2523: 'GAME::~Game': destructor tag mismatch
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.cpp(13,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.cpp(17,8): error C2523: 'GAME::~Game': destructor tag mismatch
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.cpp(18,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.cpp(18,1): error C2084: function 'int GAME::Game(void)' already has a body
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\GAME.cpp(12): message : see previous definition of 'Game'
+  LogicGame.cpp
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(10,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(14,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(13,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+D:\Github\Logic-Game-Projects\Logic-Game-Projects\LogicGame.cpp(14,34): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-  LogicGame.vcxproj -> D:\Github\Logic-Game-Projects\Logic-Game-Projects\x64\Debug\LogicGame.exe
+  Generating Code...

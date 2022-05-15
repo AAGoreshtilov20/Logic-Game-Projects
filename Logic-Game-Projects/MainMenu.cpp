@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 
+//Constructors & Destructors
 MainMenu::MainMenu(float width, float height)
 {
 	if (!font.loadFromFile("GameFonts/Oswald-Regular.ttf"))
